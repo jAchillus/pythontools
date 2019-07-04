@@ -10,7 +10,6 @@ import traceback
 import time
 import os
 url = "http://10.45.62.250/ac_portal/login.php"
-
 url = url.encode('utf-8').decode('utf-8')
 print(url)
 oridata = {"opr": "pwdLogin",
@@ -18,7 +17,6 @@ oridata = {"opr": "pwdLogin",
            "pwd": "jiang123",
            "rememberPwd": "1"
            }
-
 data = urllib.parse.urlencode(oridata).encode('utf-8')
 reqData = urllib.request.Request(url, data=data, headers={})
 
@@ -81,7 +79,7 @@ if __name__ == '__main__':
     while True:
         isConne = testPing()
         if isConne:
-            time.sleep(1)
+            time.sleep(1*60*60)
             timecount = 3
             print('is connection!')
             continue
