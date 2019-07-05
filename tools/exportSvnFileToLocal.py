@@ -45,23 +45,15 @@ def getCurTaskFileList(url, username, password, beginData=None, endDate=None):
             if i < 2:
                 continue
             tmp = log[i].strip()
-            tmpBak = tmp
             # 存储文件
             if tmp.split(' ')[0].strip() == 'M' or tmp.split(' ')[0].strip() == 'A' or tmp.split(' ')[0].strip() == 'D':
                 tmpFileList.append(tmp.split(' ', 1)[1].strip())
                 # print(tmpFileList)
-            # if (tmp.find('1559608') > 0):
-                # print(tmp)
-                # print("%s %s" % (tmpFileList, " end"))
-
-            # if (tmp.find('1559608') > -1):
-                # print(str(log) + " end" + str(i))
-                # print(tmpFileList)
-            match = dataRe.match(tmp)  # or dataRe1.match(tmp)
+            match = dataRe.match(tmp)
             if match:
-                # print(tmpFileList)
+                print(tmp)
                 isCurTask = True
-                # break
+                break
 
         if isCurTask:
             for i in tmpFileList:
@@ -89,7 +81,7 @@ def dealTaskFileList(fileList, url, username, password):
     os.chdir(targetFileAllPath)
 
 
-targetFileAllPath = 'D:\\projects\\tmp\\sv'
+targetFileAllPath = 'D:\\tmp\\svn'
 
 
 def startDealSvn(url, name, pwd, urlGet=None):
@@ -104,38 +96,7 @@ def startDealSvn(url, name, pwd, urlGet=None):
         getCurTaskFileList(urlGet, name, pwd),
         url, name, pwd)
 # 支持多个任务单
-reg = r'\[?(1559608|1559608)\]?.{0,5000}'
+reg = r'(1251004|1251003).{0,500}'
 dataRe = re.compile(reg)
-# startDealSvn('http://10.45.7.140:9050/svn/ZSmart_CRM_V8.1C', 'zhang.dongjiang2', 'jiang123')
+startDealSvn('http://10.45.7.140:9050/svn/ZSmart_CRM_V8.1C', 'zhang.dongjiang2', 'jiang123')
 #startDealSvn('http://10.45.7.140:9050/svn/ZSmart_cvBS_V8.1C/', 'zhang.dongjiang2', 'jiang123')
-
-
-def exportSvnFileByFileList(fileName, svnPath, targetFileAllPath, username, pwd):
-    os.chdir(targetFileAllPath)
-    file = open(fileName)
-    if file is None:
-        return
-    try:
-        lines = file.readlines()
-        # 每行
-        for line in lines:
-            os.chdir(targetFileAllPath)
-            filep = line.split('   ')[1].strip()
-            st = 'svn export ' + svnPath + '/' + filep + ' --username ' + username + ' --password ' + pwd
-
-            if (filep.endswith('\\') or filep.endswith('/')):
-                copyFileToSvnPath.mkdir(filep)
-                continue
-            else:
-                targetFilePath = copyFileToSvnPath.removeFileName(filep)
-                copyFileToSvnPath.mkdir(targetFilePath)
-                os.chdir(targetFileAllPath + targetFilePath)
-            svnInfo = os.popen(st)
-            fileList = svnInfo.read()
-    except Exception as e:
-        print(e)
-    finally:
-        if (file):
-            file.close()
-exportSvnFileByFileList("D://projects//tmp//file.txt",
-                        'http://10.45.7.140:9050/svn/ZSmart_CRM_V8.1C/', "D://projects//tmp//rr//", 'zhang.dongjiang2', 'jiang123')
