@@ -92,9 +92,9 @@ class EmailSend:
         finally:
             pass
     pass
-mailto_list = ['0027010408@iwhalecloud.com']
+mailto_list = ['']
 mail_host = "smtp-mail.outlook.com"  # 设置服务器
-mail_user = "zhang.dongjiang2"  # 用户名
+mail_user = "zhang."  # 用户名
 mail_pass = ""  # 口令
 mail_postfix = "iwhalecloud.com"  # 发件箱的后缀
 mail = EmailSend()

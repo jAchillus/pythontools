@@ -13,7 +13,7 @@ url = "http://10.45.62.250/ac_portal/login.php"
 url = url.encode('utf-8').decode('utf-8')
 print(url)
 oridata = {"opr": "pwdLogin",
-           "userName": "0027010408",
+           "userName": "",
            "pwd": "",
            "rememberPwd": "1"
            }
