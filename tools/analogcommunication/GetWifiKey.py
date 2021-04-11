@@ -15,7 +15,6 @@ def getAllWifi():
             wifiArr = info.split(':')
             if len(wifiArr) > 1:
                 name = wifiArr[1].rstrip().lstrip()
-                name = name[1:len(name)].rstrip().lstrip()
                 if name != '':
                     wifiResultArr.append(name)
     return wifiResultArr
