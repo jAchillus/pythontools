@@ -58,4 +58,4 @@ def startClientAccept():
 if __name__ == '__main__':
     print(port)
     # port = input("port input:")
-    threading.Thread(target=startClient).start()
+    #threading.Thread(target=startClient).start()

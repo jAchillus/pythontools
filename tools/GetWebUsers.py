@@ -118,7 +118,7 @@ def parseRe(data, reg):
     dataRe = re.compile(reg)
     dateList = dataRe.findall(data)
     return dateList
-    pass
+
 
 '''是否包含中文'''
 
@@ -129,6 +129,7 @@ def isContainZh(data):
         return True
     return False
     pass
+
 
 '''解析中文返回url编码'''
 
@@ -142,6 +143,7 @@ def parseZh(data):
     return curDate
     pass
 
+
 '''将地址中的中文转码'''
 
 
@@ -154,11 +156,12 @@ def getCurUrl(ip, url, page):
         newIp = zhPattern.sub(zhEn, newIp)
     return newIp
 
+
 '''处理每个满足条件的数据的结果'''
 
 
 def dealDataPer(dataurl, url, startIndex, cur):
-     # global userNumber
+    # global userNumber
 
     userUrl = dataurl[0]
     userName = dataurl[1]
@@ -192,6 +195,7 @@ def dealDataPer(dataurl, url, startIndex, cur):
         print("insert data error:", e)
     finally:
         pass
+
 
 '''获取用户'''
 
@@ -261,6 +265,7 @@ def dealResult(threads):
     # cx.commit()
     print(levelBo)
     cx.close()
+
 
 reg = r' href=\"(/home/main\?un=.{1,50}?=home)\" '
 reg = r'<div class="name_wrap"><a href=\"(/home/main\?un=.{1,50}\") class=\"user_name\" title=\"(.{1,50})\">.{1,50}</a><span class="forum-level-bawu bawu-info-lv(\d*)"></span></div>'
