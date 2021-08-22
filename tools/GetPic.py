@@ -227,19 +227,17 @@ def dealNextPage(response, nextPageRule, index, resRegRuleFlag, reg, isCirculate
 
 def test():
     loadPageRule = r'<source src="(https://.+?)" type="video/.+?" />[\s\S]+?</video>'
-
-    # http://www.320yd.com:66/kan.php?id=72252&typeid=1&from=porn&url=468470
-    rsp, urlList = getPageData('http://www.320yd.com:66/kan.php?id=72407&typeid=1&from=porn&url=468531', loadPageRule, True)
+ 
+    rsp, urlList = getPageData('', loadPageRule, True)
 
     pass
 
 
 path = 'D://share//img//'
-baseUrl = 'http://www.320yd.com:66'
-if __name__ == '__main__':
+baseUrl = ''
+if __name__ == '__main__1':
     try:
         print(sys.version)
-        baseUrl = 'http://www.320yd.com:66'
 
         url = 'http://music.163.com/api/playlist/detail?id=3779629'
         url = baseUrl + '/art-type-id-8-pg-34.html'
@@ -269,4 +267,6 @@ if __name__ == '__main__':
     finally:
         os._exit(0)
         pass
+
+import xcore
 
