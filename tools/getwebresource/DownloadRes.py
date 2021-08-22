@@ -14,14 +14,13 @@ def getWebByUrlIp(url):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0',
  
-'Host':'www.320yd.com:66',
-'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-'Accept-Language': 'zh-CN,en-US;q=0.7,en;q=0.3',
-#'Accept-Encoding': 'gzip, deflate',
-'Connection': 'keep-alive',
-'Cookie': 'PHPSESSID=i5a2tp5oji86v417a6t0is4ee2',
-#'Referer': 'http://www.320yd.com:66/vod-type-id-1-pg-1.html',
-'Upgrade-Insecure-Requests': 1
+        'Host':'',
+        'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'zh-CN,en-US;q=0.7,en;q=0.3',
+        #'Accept-Encoding': 'gzip, deflate',
+        'Connection': 'keep-alive',
+        'Cookie': 'PHPSESSID=i5a2tp5oji86v417a6t0is4ee2',
+        'Upgrade-Insecure-Requests': 1
     }
     page = urllib.request.Request(url, headers=headers,method="GET")
     req = urllib.request.urlopen(page)
@@ -194,18 +193,16 @@ def dealNextPage(response, nextPageRule, index, resRegRuleFlag, reg, isCirculate
 def test():
     loadPageRule = r'<source src="(https://.+?)" type="video/.+?" />[\s\S]+?</video>'
 
-    # http://www.320yd.com:66/kan.php?id=72252&typeid=1&from=porn&url=468470
-    rsp, urlList = getPageData('http://www.320yd.com:66/kan.php?id=72407&typeid=1&from=porn&url=468531', loadPageRule, True)
+    rsp, urlList = getPageData('', loadPageRule, True)
 
     pass
 
 
 path = 'D://share//img//'
-baseUrl = 'http://www.320yd.com:66'
+baseUrl = ''
 if __name__ == '__main__':
     try:
         print(sys.version)
-        baseUrl = 'http://www.320yd.com:66'
 
         url = 'http://music.163.com/api/playlist/detail?id=3779629'
         url = baseUrl + '/art-type-id-8-pg-34.html'
