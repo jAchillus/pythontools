@@ -196,7 +196,7 @@ def dealImg(url, resRegRuleFlag=0, resReg=None, isCirculate=False, nextPageRule=
             pass
         print("%s : %s" % (name, urlData))
         break
-    if isCirculate and index < 20:
+    if isCirculate and index < endIndex:
         dealNextPage(response, nextPageRule, index, resRegRuleFlag, reg, isCirculate, downloadFlag, loadPageRule)
     pass
 
@@ -235,7 +235,8 @@ def test():
 
 path = 'D://share//img//'
 baseUrl = ''
-if __name__ == '__main__1':
+endIndex = 2
+if __name__ == '__main__':
     try:
         print(sys.version)
 
@@ -255,8 +256,9 @@ if __name__ == '__main__1':
         loadPageRule = r'<source src="(https://.+?)" type="video/.+?" />[\s\S]+?</video>'
 
         # test()
-
-        dealImg(url, resRegRuleFlag, resReg, True, nextPageRule, 0, 1, loadPageRule, '')
+        startIndex = 0
+        downloadFlag = 1 #进入子页面下载
+        dealImg(url, resRegRuleFlag, resReg, True, nextPageRule, startIndex, 1, loadPageRule, '')
         pass
     except Exception as e:
         print(e)
